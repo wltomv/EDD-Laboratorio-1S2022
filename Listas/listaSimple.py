@@ -4,7 +4,6 @@ class Nodo:
     "Almacena la informacion y tiene un apuntador al siguiente nodo de la lista"
     def __init__(self,info):
         self.info=info
-
         self.siguiente=None
     
 class Lista:
@@ -34,7 +33,7 @@ class Lista:
             self.primero=nuevo
             self.tamanio+=1
     
-    def instertarfinal(self, info):
+    def insertarfinal(self, info):
         """Inserta un nuevo nodo al final de la lista
             
             Parameters
@@ -44,11 +43,14 @@ class Lista:
         nuevo = Nodo(info)
         puntero = self.primero
 
-        if self.primero is not None:
+        if self.estaVacia():
+            self.primero=nuevo
+            
+        else:
             while puntero.siguiente is not None:
                 puntero = puntero.siguiente
             puntero.siguiente = nuevo
-            self.tamanio+=1
+        self.tamanio+=1
 
     def eliminar(self, datoEliminar):
         """Elimina un nodo  de la lista
@@ -73,6 +75,27 @@ class Lista:
             else:
                 anterior.siguiente=actual.siguiente
             self.tamanio-=1
+
+    def insertarOrdenado(self, dato):
+        nuevo=Nodo(dato)
+
+        if self.estaVacia():
+            self.primero=nuevo
+        elif dato < self.primero.info:
+            nuevo.siguiente=self.primero
+            self.primero=nuevo
+        else:
+            anterior=puntero=self.primero
+            while puntero.siguiente is not None  and dato > puntero.info:
+                anterior=puntero
+                puntero=puntero.siguiente
+        
+            if dato > puntero.info:
+                anterior=puntero
+            
+            nuevo.siguiente = anterior.siguiente
+            anterior.siguiente = nuevo
+        self.tamanio+=1
   
     def visualizar(self):
         "Recorre  la lista mostrando la informacion de cada nodo"
@@ -85,12 +108,11 @@ class Lista:
   
 if  __name__ ==  '__main__':
     lista=Lista()
-    lista.insertarAlinicio(1)
-    lista.insertarAlinicio(2)
-    lista.insertarAlinicio(3)
-    lista.instertarfinal(4)
-    lista.instertarfinal(5)
+    lista.insertarOrdenado(4)
+    lista.insertarOrdenado(2)
+    lista.insertarOrdenado(3)
+    lista.insertarOrdenado(12)
+    lista.insertarOrdenado(52)
+
+    lista.visualizar()
     
-    lista.visualizar()
-    lista.eliminar(5)
-    lista.visualizar()
