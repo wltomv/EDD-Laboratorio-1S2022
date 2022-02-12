@@ -1,11 +1,5 @@
+from Nodo import Nodo 
 
-
-class Nodo:
-    "Almacena la informacion y tiene un apuntador al siguiente nodo de la lista"
-    def __init__(self,info):
-        self.info=info
-        self.siguiente=None
-    
 class Lista:
     """Estructura de datos en la que cada elemento apunta al siguiente, como punto de acceso a la lista se utiliza 
         una referencia al primer nodo"""
