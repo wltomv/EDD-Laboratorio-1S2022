@@ -1,35 +1,36 @@
 
-import Listas.ListaCircularSimple;
-import Listas.ListaDoble;
-import Arreglos.Ordenamientos;
+import Util.Animales.*;
+import Util.Granja.Granja;
 
 public class App {
     public static void main(String[] args) throws Exception {       
         //PRUEBA DE LISTA DOBLEMENTE ENLAZADA
-        ListaDoble myList= new ListaDoble();
+        Granja granja=new Granja();
+        Vaca vaca=new Vaca("Lola",600, 15, 5000, true);
+        Vaca vaca2=new Vaca("Negra",600, 17, 5000, true);
+        Vaca vaca3=new Vaca("Manchitas",600, 20, 5000, true);
+        Vaca vaca4=new Vaca("Besie",600, 9, 5000, true);
 
-        int[] arreglo={4,7,42,1,12};
-        myList.insertarAlFinal(1);
-        myList.insertarAlFinal(2);
-        myList.insertarAlFinal(3);
-        myList.insertarAlFinal(4);
-        myList.insertarAlFinal(5);
-        myList.insertarAlFinal(6);
-        myList.visualizar();
+        granja.comprarVaca(vaca);
+        granja.comprarVaca(vaca2);
+        granja.comprarVaca(vaca3);
+        granja.comprarVaca(vaca4);
 
-        // //PRUEBA DE LISTA CIRCULAR
-        ListaCircularSimple circular= new ListaCircularSimple();
-        circular.insertar(1);
-        circular.insertar(2);
-        circular.insertar(3);
-        circular.insertar(4);
-        circular.imprimir();
-
-        Ordenamientos.quicksort(arreglo);
-        // Ordenamientos.insercion(arreglo);
-        // Ordenamientos.seleccion(arreglo);
-        // Ordenamientos.burbuja(arreglo);
-        Ordenamientos.imprimir(arreglo);
+        Gallina gallina=new Gallina("blanca",5.2, 1, 100.0);
+        Gallina gallina2=new Gallina("roja",4.3, 2, 90.0);
+        Gallina gallina3=new Gallina("cafe",2.1, 3, 70.0);
+        Gallina gallina4=new Gallina("amarilla",6.89, 2, 50.0);
         
+        
+
+        granja.comprarGallina(gallina);
+        granja.comprarGallina(gallina2);
+        granja.comprarGallina(gallina3);
+        granja.comprarGallina(gallina4);
+
+        System.out.println("----Vacas----");
+        granja.listarVacas();
+        System.out.println("----Gallinas----");
+        granja.listarGallinas();
     }
 }

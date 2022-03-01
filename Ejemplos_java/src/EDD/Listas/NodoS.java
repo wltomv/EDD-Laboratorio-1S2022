@@ -1,4 +1,4 @@
-package Listas;
+package EDD.Listas;
 
 public class NodoS {
     Object info;
