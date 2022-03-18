@@ -2,7 +2,7 @@ package EDD.Arboles;
 
 
 public class ArbolBB<E extends Comparable<E>>{
-    NodoB<E> raiz;
+    NodoBB<E> raiz;
 
     public ArbolBB(){
         this.raiz=null;
@@ -12,10 +12,10 @@ public class ArbolBB<E extends Comparable<E>>{
         raiz=insertarNodo(raiz,dato);
     }
 
-    private NodoB<E> insertarNodo(NodoB<E> raiz, E dato){
+    private NodoBB<E> insertarNodo(NodoBB<E> raiz, E dato){
 
         if (raiz==null)
-            raiz=new NodoB<E>(dato);
+            raiz=new NodoBB<E>(dato);
         else if (dato.compareTo(raiz.dato)< 0)
             raiz.izquierdo=insertarNodo(raiz.izquierdo,dato);
         else if(dato.compareTo(raiz.dato)> 0)
@@ -36,7 +36,7 @@ public class ArbolBB<E extends Comparable<E>>{
         postOrden(this.raiz);
     }
 
-    private void preOrden(NodoB<E> raiz){
+    private void preOrden(NodoBB<E> raiz){
         if(raiz != null){
             System.out.print(raiz.dato.toString());
             preOrden(raiz.izquierdo);
@@ -44,7 +44,7 @@ public class ArbolBB<E extends Comparable<E>>{
         }
     }
     
-    private void inOrden(NodoB<E> raiz){
+    private void inOrden(NodoBB<E> raiz){
         if(raiz != null){
             preOrden(raiz.izquierdo);
             System.out.print(raiz.dato.toString());
@@ -52,7 +52,7 @@ public class ArbolBB<E extends Comparable<E>>{
         }
     }
 
-    private void postOrden(NodoB<E> raiz){
+    private void postOrden(NodoBB<E> raiz){
         if(raiz != null){
             preOrden(raiz.izquierdo);
             preOrden(raiz.derecho);
@@ -69,7 +69,7 @@ public class ArbolBB<E extends Comparable<E>>{
         return buscar(this.raiz,dato);
     }
 
-    private E buscar(NodoB<E> raiz, E dato){
+    private E buscar(NodoBB<E> raiz, E dato){
         if (raiz ==  null) return null;
         else if (dato.compareTo(raiz.dato) == 0) return raiz.dato;
         //si el resultado del metodo comparteTo es negativo significa que la raiz es mayor
@@ -83,7 +83,7 @@ public class ArbolBB<E extends Comparable<E>>{
         this.raiz=eliminar(this.raiz, dato);
     }
 
-    private NodoB<E> eliminar(NodoB<E> raiz, E dato){
+    private NodoBB<E> eliminar(NodoBB<E> raiz, E dato){
         // si el nodo raíz es nulo, entonces no hay nada que eliminar o no es necesario más travesía
         if (raiz==null) return null;
         else if(dato.compareTo(raiz.dato)< 0){
@@ -115,7 +115,7 @@ public class ArbolBB<E extends Comparable<E>>{
 
     }
 
-    public E encontrarSucesor(NodoB<E> raiz){
+    public E encontrarSucesor(NodoBB<E> raiz){
         while (raiz.izquierdo!=null){
             raiz=raiz.izquierdo;
         }
@@ -127,11 +127,11 @@ public class ArbolBB<E extends Comparable<E>>{
 
 
 
-class NodoB<E>{
+class NodoBB<E>{
     E dato;
-    NodoB<E> izquierdo, derecho;
+    NodoBB<E> izquierdo, derecho;
 
-    public NodoB(E dato ){
+    public NodoBB(E dato ){
         this.dato=dato;
         this.izquierdo=this.derecho=null;
     }
